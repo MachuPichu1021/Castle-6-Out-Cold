@@ -17,10 +17,11 @@ public class SwordMovement : MonoBehaviour
 
     void Update()
     {
-        Vector2 velocity = rb.velocity;
+        Vector2 velocity = new Vector2();
         velocity.x = speed * Input.GetAxis("Horizontal");
         velocity.y = speed * Input.GetAxis("Vertical");
         rb.velocity = velocity;
         hand.position = Vector3.Lerp(hand.position, anchor.position, Time.deltaTime*speed);
+        hand.LookAt(anchor, Vector2.up);
     }
 }
